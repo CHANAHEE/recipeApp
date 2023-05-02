@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:contentScrim="#FFFFFF"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+                <ImageView
+                    android:id="@+id/img_recycleritemview"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:src="@drawable/refrigerator_outline"
+                    android:background="#FFFFFF"
+                    android:layout_centerHorizontal="true"
+                    android:scaleType="fitXY"
+                    app:layout_collapseMode="parallax"/>
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:layout_collapseMode="pin"/>
+
+
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentRight="true"
+                app:cardCornerRadius="15dp"
+                >
+                <ImageButton
+                    android:id="@+id/bookmark_btn"
+                    android:layout_gravity="center"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="#4DE4E4E4"
+                    android:src="@drawable/bookmark_selector" />
+            </androidx.cardview.widget.CardView>
+            <TextView
+                android:id="@+id/rcv_item_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/dovemayo_gothic"
+                android:text="된장 돼지고기 볶음"
+                android:textSize="25sp"
+                android:textStyle="bold"/>
+            <View
+                android:id="@+id/line1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/cv"
+                android:background="#547A7A7A"/>
+            <TextView
+                android:id="@+id/tv1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:background="#54FF9800"
+                android:fontFamily="@font/dovemayo_gothic"
+                android:padding="6dp"
+                android:layout_below="@id/line1"
+                android:text="식재료"/>
+
+            <TextView
+                android:id="@+id/rcv_item_ingre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv1"
+                android:fontFamily="@font/dovemayo_gothic"
+                android:layout_marginTop="10dp"
+                android:text="11\ndd\ndd\ndd11\ndd\ndd\ndd11\ndd\ndd\ndde"/>
+            <View
+                android:id="@+id/line2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_below="@id/rcv_item_ingre"
+                android:background="#547A7A7A"/>
+
+            <TextView
+                android:id="@+id/tv2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/line2"
+                android:padding="6dp"
+                android:fontFamily="@font/dovemayo_gothic"
+                android:background="#54FF9800"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:text="조리법"/>
+
+            <TextView
+                android:id="@+id/rcv_item_howto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/dovemayo_gothic"
+                android:layout_below="@id/tv2"
+                android:text="11\ndd\ndd\ndd11\ndd\ndd\ndd11\ndd\ndd\ndd"/>
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
