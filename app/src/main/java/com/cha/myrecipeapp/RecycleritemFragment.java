@@ -21,7 +21,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
-import com.example.myrecipeapp.R;
+import com.cha.myrecipeapp.R;
 import com.bumptech.glide.Glide;
 
 public class RecycleritemFragment extends Fragment {

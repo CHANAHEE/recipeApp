@@ -16,7 +16,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.myrecipeapp.R;
+import com.cha.myrecipeapp.R;
 
 import java.util.ArrayList;
 
