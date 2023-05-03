@@ -51,7 +51,7 @@ public class AllRecipeFragment extends Fragment {
                 mainActivity.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        database = SQLiteDatabase.openDatabase("/data/data/com.example.myrecipeapp/databases/recipe.db",null,SQLiteDatabase.OPEN_READONLY);
+                        database = SQLiteDatabase.openDatabase("/data/data/com.cha.myrecipeapp/databases/recipe.db",null,SQLiteDatabase.OPEN_READONLY);
                         Cursor cursor = database.rawQuery("SELECT * FROM recipe",null);
 
                         if(cursor == null) return;

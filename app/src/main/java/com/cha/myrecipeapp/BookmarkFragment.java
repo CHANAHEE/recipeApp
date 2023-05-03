@@ -66,7 +66,7 @@ public class BookmarkFragment extends Fragment {
                     public void run() {
 
 
-                        databaseSelect = SQLiteDatabase.openDatabase("/data/data/com.example.myrecipeapp/databases/selecteditem.db",null,SQLiteDatabase.OPEN_READONLY);
+                        databaseSelect = SQLiteDatabase.openDatabase("/data/data/com.cha.myrecipeapp/databases/selecteditem.db",null,SQLiteDatabase.OPEN_READONLY);
                         Cursor cursorSelected = databaseSelect.rawQuery("SELECT * FROM selecteditem",null);
                         recyclerView.setVisibility(View.VISIBLE);
                         tv.setVisibility(View.GONE);
@@ -76,7 +76,7 @@ public class BookmarkFragment extends Fragment {
                             return;
                         }
 
-                        database = SQLiteDatabase.openDatabase("/data/data/com.example.myrecipeapp/databases/recipe.db",null,SQLiteDatabase.OPEN_READONLY);
+                        database = SQLiteDatabase.openDatabase("/data/data/com.cha.myrecipeapp/databases/recipe.db",null,SQLiteDatabase.OPEN_READONLY);
                         Cursor cursor = database.rawQuery("SELECT * FROM recipe",null);
 
                         Log.i("sel",cursorSelected.getCount()+"");

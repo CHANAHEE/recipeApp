@@ -27,7 +27,8 @@ public class SecondActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        database = SQLiteDatabase.openDatabase("/data/data/com.example.myrecipeapp/databases/recipe.db",null,SQLiteDatabase.OPEN_READONLY);
+                        adapter = new RecyclerAdapter(getApplicationContext(),items);
+                        database = SQLiteDatabase.openDatabase("/data/data/com.cha.myrecipeapp/databases/recipe.db",null,SQLiteDatabase.OPEN_READONLY);
                         Cursor cursor = database.rawQuery("SELECT * FROM recipe",null);
 
                         if(cursor == null) return;

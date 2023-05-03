@@ -91,7 +91,7 @@ public class RecycleritemFragment extends Fragment {
         * 프래그먼트 뷰에 레시피 정보 뿌리기.
         *
         * */
-        database = SQLiteDatabase.openDatabase("/data/data/com.example.myrecipeapp/databases/recipe.db",null,SQLiteDatabase.OPEN_READONLY);
+        database = SQLiteDatabase.openDatabase("/data/data/com.cha.myrecipeapp/databases/recipe.db",null,SQLiteDatabase.OPEN_READONLY);
         Cursor cursor = database.rawQuery("SELECT * FROM recipe",null);
         cursor.moveToPosition(idx);
 
@@ -115,7 +115,7 @@ public class RecycleritemFragment extends Fragment {
     }
 
     boolean seletedItem(){
-        database = openDatabase("/data/data/com.example.myrecipeapp/databases/selecteditem.db",null,SQLiteDatabase.OPEN_READWRITE);
+        database = openDatabase("/data/data/com.cha.myrecipeapp/databases/selecteditem.db",null,SQLiteDatabase.OPEN_READWRITE);
         Cursor cursor = database.rawQuery("SELECT idx FROM selecteditem",null);
         cursor.moveToFirst();
         int row = cursor.getCount();
@@ -128,7 +128,7 @@ public class RecycleritemFragment extends Fragment {
         return false;
     }
     void saveSelectedItem(){
-        database = openDatabase("/data/data/com.example.myrecipeapp/databases/selecteditem.db",null,SQLiteDatabase.OPEN_READWRITE);
+        database = openDatabase("/data/data/com.cha.myrecipeapp/databases/selecteditem.db",null,SQLiteDatabase.OPEN_READWRITE);
         database.execSQL("INSERT INTO selecteditem (idx) VALUES (?)",new String[]{ idx+"" });
         Log.i("cursor",idx +"리사이클러뷰 아이템 인덱스");
         // INSERT 수행
@@ -136,7 +136,7 @@ public class RecycleritemFragment extends Fragment {
     }
 
     void deleteSelectedItem(){
-        database = openDatabase("/data/data/com.example.myrecipeapp/databases/selecteditem.db",null,SQLiteDatabase.OPEN_READWRITE);
+        database = openDatabase("/data/data/com.cha.myrecipeapp/databases/selecteditem.db",null,SQLiteDatabase.OPEN_READWRITE);
         database.execSQL("DELETE FROM selecteditem WHERE idx="+idx);
     }
 
