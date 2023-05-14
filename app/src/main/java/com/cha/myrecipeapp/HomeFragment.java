@@ -60,7 +60,7 @@ public class HomeFragment extends Fragment {
         adapter = new RecyclerGridLayoutAdapter(getActivity(),items,fab);
         recyclerView.setAdapter(adapter);
 
-        fab.setOnClickListener(view1 -> clickFab());
+        //fab.setOnClickListener(view1 -> clickFab());
     }
     void clickFab(){
         Intent intent = new Intent(getActivity(), SecondActivity.class);

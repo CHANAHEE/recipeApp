@@ -1,6 +1,7 @@
 package com.cha.myrecipeapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -24,7 +25,7 @@ public class RecyclerGridLayoutAdapter extends RecyclerView.Adapter<RecyclerGrid
     Boolean isItemSelect = false;
     ExtendedFloatingActionButton fab;
     int checkNum = 0;
-
+    String selectedItem = "";
     public RecyclerGridLayoutAdapter(Context context, ArrayList<Item> items,ExtendedFloatingActionButton fab) {
         this.context = context;
         this.items = items;
@@ -67,7 +68,7 @@ public class RecyclerGridLayoutAdapter extends RecyclerView.Adapter<RecyclerGrid
 
         ImageButton imgBtn;
         TextView tv;
-        String[] selecteItem = new String[40];
+
 
 
         public VH(@NonNull View itemView) {
@@ -77,9 +78,13 @@ public class RecyclerGridLayoutAdapter extends RecyclerView.Adapter<RecyclerGrid
 
             //imgBtn.setOnClickListener(listener);
             tv.setOnClickListener(listener);
-        }
-        public String[] getSelectedItemName(){
-            return selecteItem;
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.i("adfbvcsc",selectedItem);
+                    context.startActivity(new Intent(context, SecondActivity.class).putExtra("selectedItem",selectedItem));
+                }
+            });
         }
 
         View.OnClickListener listener = new View.OnClickListener() {
@@ -92,13 +97,14 @@ public class RecyclerGridLayoutAdapter extends RecyclerView.Adapter<RecyclerGrid
 
                 if(v.isSelected()){
                     checkNum--;
-                    selecteItem[info.index] = "";
                     tv.setTextColor(Color.parseColor("#000000"));
                     imgBtn.setAlpha(1f);
                     v.setSelected(false);
                 }else{
                     checkNum++;
-                    selecteItem[info.index] = info.name;
+                    Log.i("adfbvcsc",selectedItem);
+                    selectedItem += info.name;
+                    Log.i("adfbvcsc",selectedItem);
                     v.setSelected(true);
                     imgBtn.setAlpha(0.1f);
                     tv.setTextColor(Color.parseColor("#D3840F"));

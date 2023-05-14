@@ -30,18 +30,20 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.VH> {
     public RecyclerAdapter(Context context, ArrayList<Item> items) {
         this.context = context;
         this.items = items;
+        Log.i("adapter213","어댑터 생성자 진입" + context);
     }
 
     @NonNull
     @Override
     public VH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        Log.i("adapter213","onCreateViewHolder 진입");
         return new VH(LayoutInflater.from(context).inflate(R.layout.recyclerview_itemview,parent,false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull VH holder, int position) {
 
-
+        Log.i("adapter213","onBindViewHolder 진입");
         Item item = items.get(position);
         Glide.with(context).load(item.mainImg).into(holder.iv);
         holder.tv_title.setText(item.title);
@@ -62,7 +64,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.VH> {
 
         public VH(@NonNull View itemView) {
             super(itemView);
-
+            Log.i("adapter213","VH 진입");
             iv = itemView.findViewById(R.id.recyclerview_iv);
             tv_title = itemView.findViewById(R.id.recyclerview_tv_title);
             tv_hash = itemView.findViewById(R.id.recyclerview_tv_hashtag);

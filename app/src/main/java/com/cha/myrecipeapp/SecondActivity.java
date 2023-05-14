@@ -27,9 +27,11 @@ public class SecondActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        adapter = new RecyclerAdapter(getApplicationContext(),items);
+                        String selectedItem = getIntent().getStringExtra("selectedItem");
+                        Log.i("adfbvcsc",selectedItem);
                         database = SQLiteDatabase.openDatabase("/data/data/com.cha.myrecipeapp/databases/recipe.db",null,SQLiteDatabase.OPEN_READONLY);
-                        Cursor cursor = database.rawQuery("SELECT * FROM recipe",null);
+                        Log.i("adfbvcsc",selectedItem);
+                        Cursor cursor = database.rawQuery("SELECT * FROM recipe WHERE title LIKE '%" + selectedItem +"%'",null);
 
                         if(cursor == null) return;
 
@@ -48,8 +50,10 @@ public class SecondActivity extends AppCompatActivity {
                             cursor.moveToNext();
                         }
 
-                        Log.i("adapter","All Recipe Adapter 생성자");
-                        adapter.notifyDataSetChanged();
+                        Log.i("adapter213","All Recipe Adapter 생성자");
+                        adapter = new RecyclerAdapter(SecondActivity.this,items);
+                        recyclerView.setAdapter(adapter);
+                        Log.i("adapter213",items.size() + "");
                     }
                 });
             }
@@ -59,5 +63,7 @@ public class SecondActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
+
+        recyclerView = findViewById(R.id.recyclerview_useablerecipe);
     }
 }

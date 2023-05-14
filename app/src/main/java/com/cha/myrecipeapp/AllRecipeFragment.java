@@ -25,14 +25,13 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
-import com.cha.myrecipeapp.R;
 
 import java.util.ArrayList;
 
 public class AllRecipeFragment extends Fragment {
 
     ArrayList<Item> items = new ArrayList<>();
-    ArrayList<Item> search_items;
+    ArrayList<Item> searchItems;
     RecyclerView recyclerView;
     RecyclerAdapter adapter;
     SQLiteDatabase database;
@@ -139,39 +138,32 @@ public class AllRecipeFragment extends Fragment {
 
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
-            Log.i("edit",s.toString());
-            search_items = new ArrayList<>();
+            searchItems = new ArrayList<>();
             if(s.toString().equals("")){
                 adapter = new RecyclerAdapter(getActivity(),items);
             }else{
                 for(int i=0;i<items.size();i++){
                     if(items.get(i).title.contains(s.toString())){
 
-                        search_items.add(items.get(i));
+                        searchItems.add(items.get(i));
                     }
                 }
-                adapter = new RecyclerAdapter(getActivity(),search_items);
-
+                adapter = new RecyclerAdapter(getActivity(), searchItems);
             }
             recyclerView.setAdapter(adapter);
         }
 
         @Override
         public void afterTextChanged(Editable s) {
-            Log.i("edit"," 와쳐 내부 2");
-
         }
     };
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Log.i("edit","리사이클러뷰 뿌리기");
         recyclerView = view.findViewById(R.id.recyclerview_allrecipe);
         adapter = new RecyclerAdapter(getActivity(),items);
-        Log.i("adapter","All Recipe Adapter");
         recyclerView.setAdapter(adapter);
-
 
         et = view.findViewById(R.id.et);
         tv = view.findViewById(R.id.tv);
@@ -179,10 +171,5 @@ public class AllRecipeFragment extends Fragment {
         view.findViewById(R.id.fab).setOnClickListener(v -> {
             recyclerView.scrollToPosition(RecyclerView.SCROLLBAR_POSITION_DEFAULT);
         });
-
-
-
-
-
     }
 }
