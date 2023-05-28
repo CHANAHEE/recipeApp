@@ -15,23 +15,11 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-    signingConfigs {
-        release{
-            storeFile file('keystore.jks') // 기준은 App 폴더 기준이다.
 
-            storePassword "tjdrjs0208"
-
-            keyAlias "key0"
-
-            keyPassword "tjdrjs0208"
-
-        }
-    }
     buildTypes {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.release
         }
     }
     compileOptions {
