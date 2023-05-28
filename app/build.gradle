@@ -10,22 +10,36 @@ android {
         applicationId "com.cha.myrecipeapp"
         minSdk 24
         targetSdk 33
-        versionCode 2
-        versionName "1.1"
+        versionCode 3
+        versionName "1.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+    signingConfigs {
+        release{
+            storeFile file('keystore.jks') // 기준은 App 폴더 기준이다.
 
+            storePassword "tjdrjs0208"
+
+            keyAlias "key0"
+
+            keyPassword "tjdrjs0208"
+
+        }
+    }
     buildTypes {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+
 }
 
 dependencies {

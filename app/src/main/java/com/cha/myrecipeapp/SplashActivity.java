@@ -65,11 +65,11 @@ public class SplashActivity extends AppCompatActivity {
             database = openOrCreateDatabase("selecteditem.db",MODE_PRIVATE,null);
             database.execSQL("CREATE TABLE IF NOT EXISTS selecteditem(num INTEGER PRIMARY KEY , idx INTEGER)");
             intent = new Intent(SplashActivity.this, MainActivity.class);
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+//            try {
+//                Thread.sleep(1000);
+//            } catch (InterruptedException e) {
+//                throw new RuntimeException(e);
+//            }
             startActivity(intent);
             finish();
             Log.i("thread","스타트스레드끝");
@@ -83,12 +83,12 @@ public class SplashActivity extends AppCompatActivity {
             Log.i("thread","로딩스레드진입");
 
             Cursor cursor = database.rawQuery("SELECT * FROM recipe", null);
-            if (cursor.getCount() == 1001) {
+            if (cursor.getCount() >= 10) {
                 new StartThread().start();
                 return;
             }
 
-            String address = "http://openapi.foodsafetykorea.go.kr/api/50c404d9fa5141449493/COOKRCP01/xml/1/1001";
+            String address = "http://openapi.foodsafetykorea.go.kr/api/50c404d9fa5141449493/COOKRCP01/xml/1/3";
 
             try {
                 URL url = new URL(address);
